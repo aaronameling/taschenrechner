@@ -1,0 +1,45 @@
+body {
+    background-color: #444746;
+}
+
+.case {
+    width: 16vw;
+    height: 56vh;
+    background-color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 45px;
+    border: 3px solid silver;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.display {
+    direction: ltr;
+    position: relative;
+    color: white;
+    margin-right: 9%;
+    margin-bottom: 5%;
+    font-size: 4em;
+    text-align: right;
+}
+
+.div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12%;
+}
+
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 4%;
+    margin-bottom: 3%;
+}
+
+

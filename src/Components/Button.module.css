@@ -1,0 +1,15 @@
+.div {
+    width: 19%;
+    aspect-ratio: 1 / 1;
+    border-radius: 100%;
+}
+
+.button {
+    cursor: pointer;
+    border-style: none;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 100%;
+    font-size: 1.6em;
+    font-weight: bold;
+}
