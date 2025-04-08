@@ -15,24 +15,26 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    align-items: center;
 }
 
 .display {
     direction: ltr;
     position: relative;
     color: white;
-    margin-right: 9%;
+    margin-right: 19%;
     margin-bottom: 5%;
     font-size: 4em;
     text-align: right;
+    width: 100%;
 }
 
-.div {
+.container {
     display: flex;
     flex-direction: column;
     margin-bottom: 12%;
+    width: 100%;
 }
-
 
 .row {
     display: flex;

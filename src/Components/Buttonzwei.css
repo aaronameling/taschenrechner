@@ -1,10 +1,10 @@
-.div {
+.box2 {
     width: 42%;
     height: auto;
     border-radius: 50px;
 }
 
-.button {
+.button-two {
     cursor: pointer;
     border-style: none;
     width: 100%;
@@ -16,3 +16,10 @@
     align-items: center;
     padding-left: 19%;
 }
+
+.buttonzwei-number {
+    background-color: #343235;
+    color: white;
+    font-weight: 500;
+}
+

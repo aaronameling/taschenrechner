@@ -1,2 +1,7 @@
+.listContainer {
+    display: flex;
+}
 
-
+.listBox {
+    color: white;
+}

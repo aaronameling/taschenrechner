@@ -1,11 +1,12 @@
 import React from 'react';
-import styles from "./Button.module.css"
+import "./Button.css";
 
-function Button(props){
+function Button({styles, text, eventhandler}){
     return (
-        <div className={styles.div}>
-            <button style={{backgroundColor: props.backgroundColor, color: props.color}} className={styles.button} onClick={props.onClick}>
-                {props.text}
+        <div className={'box1'}>
+            <button className={`button-one ${styles}`}
+                    onClick={(event)=> {eventhandler(event, text)}}>
+                {text}
             </button>
         </div>
     );

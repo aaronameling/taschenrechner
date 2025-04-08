@@ -1,11 +1,12 @@
 import React from 'react';
-import styles from "./Buttonzwei.module.css"
+import "./Buttonzwei.css";
 
-function Buttonzwei(props) {
+function Buttonzwei({styles, text, eventhandler}) {
     return (
-        <div className={styles.div}>
-            <button style={{backgroundColor: props.backgroundColor, color: props.color}}  className={styles.button} onClick={props.onClick}>
-                {props.text}
+        <div className={'box2'}>
+            <button className={`button-two ${styles}`}
+                    onClick={(event) => {eventhandler(event, text)}}>
+                {text}
             </button>
         </div>
     );

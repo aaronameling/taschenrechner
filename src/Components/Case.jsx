@@ -1,43 +1,110 @@
-import React, { useState } from "react";
-import Button from "./Button";
-import Buttonzwei from "./Buttonzwei";
-import styles from "./Case.module.css"
+import {useEffect, useState} from "react";
+import Buttonzwei from "./Buttonzwei.jsx";
+import Button from "./Button.jsx";
+import "./Case.css";
 
 function Case() {
-    return (
-        <div className={styles.case}>
-            <div className={styles.display}>
+    const [number, setNumber] = useState("")
+    const [operator, setOperator] = useState(null);
+    const [firstNumber, setFirstNumber] = useState(null);
 
+    const onclickHandlerNumber = (event, text) => {
+
+        setNumber((prevNumber) =>
+            prevNumber + text
+
+        );
+    };
+
+    const onClickHandlerToggleMinus = (event, text) => {
+        setNumber("-" + number);
+    };
+
+    useEffect(() => {
+        console.log("Neuer wert von number", number);
+    }, [number]);
+
+    const onClickHandlerDelet = (event, text) => {
+        setNumber("")
+    };
+
+    const onClickHandlerOperator = (event, text) => {
+        let operatorValue = text;
+        if (text === "÷"){
+            operatorValue = "/"
+        } else if (text === "x") {
+            operatorValue = "*"
+        }
+        Number(setFirstNumber(number))
+        setOperator(operatorValue);
+        setNumber("")
+    };
+
+    const onClickHandlerModificator = (event, text) => {
+        setNumber(prevNumber => {
+            const porzentWert = Number(firstNumber) * Number(prevNumber / 100);
+            return String(porzentWert);
+        })
+
+    };
+
+    const onClickHandlerResult = (event, text) => {
+        let result;
+        switch (operator) {
+            case "/":
+                result = Number(firstNumber) / Number(number);
+                break;
+            case "*":
+                result = Number(firstNumber) * Number(number);
+                break;
+            case "+":
+                result = Number(firstNumber) + Number(number);
+                break;
+            case "-":
+                result = Number(firstNumber) - Number(number);
+                break;
+            default:
+                console.log("Unknown Operator", operator);
+        }
+        setNumber(String(result));
+        const calPath = `${firstNumber} ${operator} ${number} = ${result}`;
+        console.log(calPath);
+    };
+
+    return (
+        <div className="case">
+            <div className="display">
+                {number || "0"}
             </div>
-            <div className={styles.div}>
-                <div className={styles.row}>
-                    <Button type="button" backgroundColor="#a6a4a7" color="black" text="AC"/>
-                    <Button type="button" backgroundColor="#a6a4a7" color="black" text="+/-"/>
-                    <Button type="button" backgroundColor="#a6a4a7" color="black" text="%"/>
-                    <Button type="button" backgroundColor="#ffa10e" color="white" text="÷"/>
+            <div className="container">
+                <div className="row">
+                    <Button  styles={"button-operator-one"} text={"AC"} eventhandler={onClickHandlerDelet}/>
+                    <Button  styles={"button-operator-one"} text={"+/-"} eventhandler={onClickHandlerToggleMinus}/>
+                    <Button  styles={"button-operator-one"} text={"%"} eventhandler={onClickHandlerModificator}/>
+                    <Button  styles={"button-operator-two"} text={"÷"} eventhandler={onClickHandlerOperator}/>
                 </div>
-                <div className={styles.row}>
-                    <Button type="button" backgroundColor="#343235" color="white" text="7"/>
-                    <Button type="button" backgroundColor="#343235" color="white" text="8"/>
-                    <Button type="button" backgroundColor="#343235" color="white" text="9"/>
-                    <Button type="button" backgroundColor="#ffa10e" color="white" text="x"/>
+                <div className="row">
+                    <Button styles={"button-number"} text={"7"} eventhandler={onclickHandlerNumber}/>
+                    <Button styles={"button-number"} text={"8"} eventhandler={onclickHandlerNumber}/>
+                    <Button styles={"button-number"} text={"9"} eventhandler={onclickHandlerNumber}/>
+                    <Button styles={"button-operator-two"} text={"x"} eventhandler={onClickHandlerOperator}/>
                 </div>
-                <div className={styles.row}>
-                    <Button type="button" backgroundColor="#343235" color="white" text="4"/>
-                    <Button type="button" backgroundColor="#343235" color="white" text="5"/>
-                    <Button type="button" backgroundColor="#343235" color="white" text="6"/>
-                    <Button type="button" backgroundColor="#ffa10e" color="white" text="-"/>
+                <div className="row">
+                    <Button styles={"button-number"} text={"4"} eventhandler={onclickHandlerNumber}/>
+                    <Button styles={"button-number"} text={"5"} eventhandler={onclickHandlerNumber}/>
+                    <Button styles={"button-number"} text={"6"} eventhandler={onclickHandlerNumber}/>
+                    <Button styles={"button-operator-two"} text={"-"} eventhandler={onClickHandlerOperator}/>
                 </div>
-                <div className={styles.row}>
-                    <Button type="button" backgroundColor="#343235" color="white" text="1"/>
-                    <Button type="button" backgroundColor="#343235" color="white" text="2"/>
-                    <Button type="button" backgroundColor="#343235" color="white" text="3"/>
-                    <Button type="button" backgroundColor="#ffa10e" color="white" text="+"/>
+                <div className="row">
+                    <Button styles={"button-number"} text={"1"} eventhandler={onclickHandlerNumber}/>
+                    <Button styles={"button-number"} text={"2"} eventhandler={onclickHandlerNumber}/>
+                    <Button styles={"button-number"} text={"3"} eventhandler={onclickHandlerNumber}/>
+                    <Button styles={"button-operator-two"} text={"+"} eventhandler={onClickHandlerOperator}/>
                 </div>
-                <div className={styles.row}>
-                    <Buttonzwei type="button" backgroundColor="#343235" color="white" text="0"/>
-                    <Button type="button" backgroundColor="#343235" color="white" text=","/>
-                    <Button type="button" backgroundColor="#ffa10e" color="white" text="="/>
+                <div className="row">
+                    <Buttonzwei styles={"buttonzwei-number"} text={"0"} eventhandler={onclickHandlerNumber}/>
+                    <Button styles={"button-number"} text={"."} eventhandler={onclickHandlerNumber}/>
+                    <Button styles={"button-operator-two"} text={"="} eventhandler={onClickHandlerResult}/>
                 </div>
             </div>
         </div>

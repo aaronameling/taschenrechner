@@ -1,9 +1,17 @@
-import Case from "./Components/Case"
+import Case from "./Components/Case.jsx"
+import './App.css'
+
+
 
 function App() {
     return(
         <div>
-           <Case/>
+            <div className={"listContainer"}>
+                <ul className={"listBox"}>
+
+                </ul>
+            </div>
+            <Case/>
         </div>
     );
 }
