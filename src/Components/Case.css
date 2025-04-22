@@ -3,8 +3,8 @@ body {
 }
 
 .case {
-    width: 16vw;
-    height: 56vh;
+    aspect-ratio: 9/19.5;
+    height: 55vh;
     background-color: black;
     position: absolute;
     top: 50%;
@@ -22,11 +22,12 @@ body {
     direction: ltr;
     position: relative;
     color: white;
-    margin-right: 19%;
     margin-bottom: 5%;
-    font-size: 4em;
+    font-size: 3em;
     text-align: right;
-    width: 100%;
+    width: 95%;
+    box-sizing: border-box;
+    padding-inline-end: 8%;
 }
 
 .container {
@@ -42,6 +43,36 @@ body {
     justify-content: center;
     gap: 4%;
     margin-bottom: 3%;
+}
+
+@media (max-width: 380px) {
+    .case {
+        height: 95vh;
+    }
+}
+
+@media (min-width: 381px) and (max-width: 768px) {
+    .case {
+        height: 85vh;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+    .case {
+        height: 75vh;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1366px) {
+    .case {
+        height: 60vh;
+    }
+}
+
+@media (min-width: 1367px) {
+    .case {
+        height: 50vh;
+    }
 }
 
 

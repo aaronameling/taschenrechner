@@ -1,17 +1,21 @@
-import Case from "./Components/Case.jsx"
+// import Case from "./Components/Case.jsx"
+import Casetwo from "./Components/Casetwo.jsx"
+import History from "./Components/History.jsx"
 import './App.css'
-
-
+import {useState} from "react";
 
 function App() {
+
+    const [history, setHistory] = useState([]);
+
+    const addToHistory = (calcPath) => {
+        setHistory(prevState => [...prevState, calcPath]);
+    }
+
     return(
         <div>
-            <div className={"listContainer"}>
-                <ul className={"listBox"}>
-
-                </ul>
-            </div>
-            <Case/>
+            <History history={history}/>
+            <Casetwo addToHistory={addToHistory}/>
         </div>
     );
 }

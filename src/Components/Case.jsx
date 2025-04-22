@@ -3,7 +3,7 @@ import Buttonzwei from "./Buttonzwei.jsx";
 import Button from "./Button.jsx";
 import "./Case.css";
 
-function Case() {
+function Case({addToHistory}) {
     const [number, setNumber] = useState("")
     const [operator, setOperator] = useState(null);
     const [firstNumber, setFirstNumber] = useState(null);
@@ -67,9 +67,13 @@ function Case() {
                 console.log("Unknown Operator", operator);
         }
         setNumber(String(result));
-        const calPath = `${firstNumber} ${operator} ${number} = ${result}`;
-        console.log(calPath);
+        const calcPath = `${firstNumber} ${operator} ${number} = ${result}`;
+        console.log(calcPath);
+        addToHistory(calcPath);
     };
+
+    const test = (9 * 9 + 9) / (3 * 3 + 4)
+    console.log(test)
 
     return (
         <div className="case">
