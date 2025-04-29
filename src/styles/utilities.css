@@ -1,0 +1,43 @@
+/* ----- / Styling für die Buttons / ----- */
+.button-one {
+    @apply cursor-pointer border-none w-full aspect-square rounded-full text-[1.6em] font-bold;
+}
+
+.button-two {
+    @apply cursor-pointer border-none w-full h-full rounded-[50px] text-[1.6em] font-bold flex items-center pl-[19%];
+}
+
+.button-number {
+    @apply bg-[#343235] text-white font-medium;
+}
+
+.button-operator-one {
+    @apply bg-[#a6a4a7] font-thin;
+}
+
+.button-operator-two {
+    @apply bg-[#ff9e0b] font-thin text-white;
+}
+
+/* ----- / Styling für die Casezwei / ----- */
+.case {
+    @apply aspect-[9/19.5] bg-black absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[45px]
+    border-[3px] border-[#c0c0c0] flex flex-col justify-end items-center;
+}
+
+.display {
+    direction: ltr;
+    @apply relative text-white mb-[5%] text-[3em] text-right w-[95%] box-border pe-[8%];
+}
+
+.container {
+    @apply flex flex-col mb-[12%] w-full;
+}
+
+.row {
+    @apply flex flex-row justify-center gap-[4%] mb-[3%];
+}
+
+.flash {
+    @apply brightness-125 shadow-inner transition-[filter] duration-[233ms];
+}

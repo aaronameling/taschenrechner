@@ -1,10 +1,9 @@
 import React from 'react';
-import "./Button.css";
 
-function Button({styles, text, eventhandler}){
+function Button({stylesDiv, styles, text, eventhandler}){
     return (
-        <div className={'box1'}>
-            <button className={`button-one ${styles}`}
+        <div className={`${stylesDiv}`}>
+            <button className={`${styles}`}
                     onClick={(event)=> {eventhandler(event, text)}}>
                 {text}
             </button>

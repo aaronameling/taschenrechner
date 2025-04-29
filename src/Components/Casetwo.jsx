@@ -1,13 +1,14 @@
 import {useEffect, useState} from "react";
 import { evaluate } from "mathjs";
 import Button from "./Button.jsx";
-import Buttonzwei from "./Buttonzwei.jsx";
 import "./Casetwo.css";
 
 function Casetwo({addToHistory}) {
+
     const [number, setNumber] = useState("")
     const [display, setDisplay] = useState("");
     const [fontSize, setFontSize] = useState(3);
+
 
     useEffect(() => {
         const length = display.length
@@ -26,12 +27,21 @@ function Casetwo({addToHistory}) {
         }
     }, [display]);
 
-    const onclickHandlerNumber = (event, text) => {
+    useEffect(() => {
+        console.log("Neuer wert von number", number);
+    }, [number]);
+
+
+    const animateClick = (event) => {
         const button = event.currentTarget;
         button.classList.add("flash");
         setTimeout(() => {
             button.classList.remove("flash");
         }, 233);
+    }
+
+    const onclickHandlerNumber = (event, text) => {
+        animateClick(event);
         setNumber(prevNumber =>
             prevNumber + text
         );
@@ -41,11 +51,7 @@ function Casetwo({addToHistory}) {
     };
 
     const onClickHandlerOperator = (event, text) => {
-        const button = event.currentTarget;
-        button.classList.add("flash");
-        setTimeout(() => {
-            button.classList.remove("flash");
-        }, 233);
+        animateClick(event);
         let operatorValue = text;
         if (text === "÷"){
             operatorValue = "/"
@@ -61,22 +67,15 @@ function Casetwo({addToHistory}) {
     };
 
     const onClickHandlerDelet = (event) => {
-        const button = event.currentTarget;
-        button.classList.add("flash");
-        setTimeout(() => {
-            button.classList.remove("flash");
-        }, 233);
+        animateClick(event);
         setNumber("")
         setDisplay("")
     };
 
     const onClickHandlerResult = (event) => {
-        const button = event.currentTarget;
-        button.classList.add("flash");
-        setTimeout(() => {
-            button.classList.remove("flash");
-        }, 233);
+        animateClick(event);
         try {
+            // Eigenen Rechenweg
             const result = evaluate(number)
             setNumber(result.toString());
             setDisplay(result.toString());
@@ -89,44 +88,41 @@ function Casetwo({addToHistory}) {
         }
     };
 
-    useEffect(() => {
-        console.log("Neuer wert von number", number);
-    }, [number]);
 
     return (
-        <div className="case">
+        <div className="case h-[85vh] sm:h-[75vh] md:h-[65vh] lg:h-[55vh] xl:h-[50vh]">
             <div className="display" style={{fontSize: `${fontSize}em`}}>
                 {display || "0"}
             </div>
             <div className="container">
                 <div className="row">
-                    <Button  styles={"button-operator-one"} text={"AC"} eventhandler={onClickHandlerDelet}/>
-                    <Button  styles={"button-operator-one"} text={"("} eventhandler={onclickHandlerNumber}/>
-                    <Button  styles={"button-operator-one"} text={")"} eventhandler={onclickHandlerNumber}/>
-                    <Button  styles={"button-operator-two"} text={"÷"} eventhandler={onClickHandlerOperator}/>
+                    <Button stylesDiv={"w-[19%]"} styles={"button-one button-operator-one"} text={"AC"} eventhandler={onClickHandlerDelet}/>
+                    <Button stylesDiv={"w-[19%]"} styles={"button-one button-operator-one"} text={"("} eventhandler={onclickHandlerNumber}/>
+                    <Button stylesDiv={"w-[19%]"} styles={"button-one button-operator-one"} text={")"} eventhandler={onclickHandlerNumber}/>
+                    <Button stylesDiv={"w-[19%]"} styles={"button-one button-operator-two"} text={"÷"} eventhandler={onClickHandlerOperator}/>
                 </div>
                 <div className="row">
-                    <Button styles={"button-number"} text={"7"} eventhandler={onclickHandlerNumber}/>
-                    <Button styles={"button-number"} text={"8"} eventhandler={onclickHandlerNumber}/>
-                    <Button styles={"button-number"} text={"9"} eventhandler={onclickHandlerNumber}/>
-                    <Button styles={"button-operator-two"} text={"×"} eventhandler={onClickHandlerOperator}/>
+                    <Button stylesDiv={"w-[19%]"} styles={"button-one button-number"} text={"7"} eventhandler={onclickHandlerNumber}/>
+                    <Button stylesDiv={"w-[19%]"} styles={"button-one button-number"} text={"8"} eventhandler={onclickHandlerNumber}/>
+                    <Button stylesDiv={"w-[19%]"} styles={"button-one button-number"} text={"9"} eventhandler={onclickHandlerNumber}/>
+                    <Button stylesDiv={"w-[19%]"} styles={"button-one button-operator-two"} text={"×"} eventhandler={onClickHandlerOperator}/>
                 </div>
                 <div className="row">
-                    <Button styles={"button-number"} text={"4"} eventhandler={onclickHandlerNumber}/>
-                    <Button styles={"button-number"} text={"5"} eventhandler={onclickHandlerNumber}/>
-                    <Button styles={"button-number"} text={"6"} eventhandler={onclickHandlerNumber}/>
-                    <Button styles={"button-operator-two"} text={"-"} eventhandler={onClickHandlerOperator}/>
+                    <Button stylesDiv={"w-[19%]"} styles={"button-one button-number"} text={"4"} eventhandler={onclickHandlerNumber}/>
+                    <Button stylesDiv={"w-[19%]"} styles={"button-one button-number"} text={"5"} eventhandler={onclickHandlerNumber}/>
+                    <Button stylesDiv={"w-[19%]"} styles={"button-one button-number"} text={"6"} eventhandler={onclickHandlerNumber}/>
+                    <Button stylesDiv={"w-[19%]"} styles={"button-one button-operator-two"} text={"-"} eventhandler={onClickHandlerOperator}/>
                 </div>
                 <div className="row">
-                    <Button styles={"button-number"} text={"1"} eventhandler={onclickHandlerNumber}/>
-                    <Button styles={"button-number"} text={"2"} eventhandler={onclickHandlerNumber}/>
-                    <Button styles={"button-number"} text={"3"} eventhandler={onclickHandlerNumber}/>
-                    <Button styles={"button-operator-two"} text={"+"} eventhandler={onClickHandlerOperator}/>
+                    <Button stylesDiv={"w-[19%]"} styles={"button-one button-number"} text={"1"} eventhandler={onclickHandlerNumber}/>
+                    <Button stylesDiv={"w-[19%]"} styles={"button-one button-number"} text={"2"} eventhandler={onclickHandlerNumber}/>
+                    <Button stylesDiv={"w-[19%]"} styles={"button-one button-number"} text={"3"} eventhandler={onclickHandlerNumber}/>
+                    <Button stylesDiv={"w-[19%]"} styles={"button-one button-operator-two"} text={"+"} eventhandler={onClickHandlerOperator}/>
                 </div>
                 <div className="row">
-                    <Buttonzwei styles={"buttonzwei-number"} text={"0"} eventhandler={onclickHandlerNumber}/>
-                    <Button styles={"button-number"} text={"."} eventhandler={onclickHandlerNumber}/>
-                    <Button styles={"button-operator-two"} text={"="} eventhandler={onClickHandlerResult}/>
+                    <Button stylesDiv={"w-[42%] h-auto rounded-[50px]"} styles={"button-two button-number"} text={"0"} eventhandler={onclickHandlerNumber}/>
+                    <Button stylesDiv={"w-[19%]"} styles={"button-one button-number"} text={"."} eventhandler={onclickHandlerNumber}/>
+                    <Button stylesDiv={"w-[19%]"} styles={"button-one button-operator-two"} text={"="} eventhandler={onClickHandlerResult}/>
                 </div>
             </div>
         </div>
